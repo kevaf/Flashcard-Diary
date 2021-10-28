@@ -14,7 +14,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
-class CardList(LoginRequiredMixin,APIView):
+class CardList(APIView):
 
     def get(self, request, format=None):
         all_cards = Cards.objects.all()
@@ -29,7 +29,7 @@ class CardList(LoginRequiredMixin,APIView):
             return Response(serializers.data, status=status.HTTP_201_CREATED)
         return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class CardDets(LoginRequiredMixin,APIView):
+class CardDets(APIView):
     
     def get_card(self, pk):
         try:
